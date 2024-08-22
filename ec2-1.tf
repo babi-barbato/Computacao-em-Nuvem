@@ -4,4 +4,10 @@ resource "aws_instance" "ec2-terraform1" {
   tags = {
     Name = "ec2-terraform1-separado"
   }
+
+  ebs_block_device {
+    device_name = "/dev/sda1"
+    volume_size = 40
+    volume_type = "gp3"
+  }
 }
