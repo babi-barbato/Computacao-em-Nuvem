@@ -32,6 +32,12 @@ resource "aws_instance" "ec2-iac-aula2" {
   key_name = "aula_iac"
 }
 
+variable "porta_http" {
+  description = "porta http"
+  default = 80
+  type = number
+}
+
 resource "aws_security_group" "sg_aula_iac" {
   name = "sg_aula_iac"
 
@@ -41,4 +47,9 @@ resource "aws_security_group" "sg_aula_iac" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_subnet" "minha_subrede" {
+  vpc_id = "id da vpc"
+  cidr_block = "10.10.10.0/24"
 }
